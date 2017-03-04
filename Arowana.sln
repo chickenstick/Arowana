@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arowana", "Arowana\Arowana.csproj", "{712EFD02-BCB1-440E-A163-CB707B8D5DC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{C67A2867-D949-4DBF-8BCE-916A766C27A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arowana.Test", "Arowana.Test\Arowana.Test.csproj", "{08705A1D-7F90-42A6-8D48-7EEA60113585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordHolder", "PasswordHolder\PasswordHolder.csproj", "{5B448845-F414-43BE-B28C-09C815D7ECF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{712EFD02-BCB1-440E-A163-CB707B8D5DC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{712EFD02-BCB1-440E-A163-CB707B8D5DC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{712EFD02-BCB1-440E-A163-CB707B8D5DC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{712EFD02-BCB1-440E-A163-CB707B8D5DC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C67A2867-D949-4DBF-8BCE-916A766C27A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C67A2867-D949-4DBF-8BCE-916A766C27A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C67A2867-D949-4DBF-8BCE-916A766C27A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C67A2867-D949-4DBF-8BCE-916A766C27A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08705A1D-7F90-42A6-8D48-7EEA60113585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08705A1D-7F90-42A6-8D48-7EEA60113585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08705A1D-7F90-42A6-8D48-7EEA60113585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08705A1D-7F90-42A6-8D48-7EEA60113585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B448845-F414-43BE-B28C-09C815D7ECF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B448845-F414-43BE-B28C-09C815D7ECF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B448845-F414-43BE-B28C-09C815D7ECF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B448845-F414-43BE-B28C-09C815D7ECF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
