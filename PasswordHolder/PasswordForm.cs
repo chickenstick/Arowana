@@ -81,7 +81,7 @@ namespace PasswordHolder
 
         private void PasswordForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_okButtonClicked)
+            if (!_okButtonClicked && e.CloseReason != CloseReason.ApplicationExitCall)
             {
                 txtPassword.Text = null;
                 this.DialogResult = DialogResult.Cancel;

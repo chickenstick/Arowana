@@ -73,8 +73,6 @@ namespace PasswordHolder
         {
             _isNew = true;
             _isDirty = false;
-            _fileName = null;
-            _password = null;
             _accountCollection = new AccountCollection();
             SetMainFormForNew();
         }
@@ -86,8 +84,6 @@ namespace PasswordHolder
             {
                 _isNew = false;
                 _isDirty = false;
-                _fileName = null;
-                _password = null;
                 SetMainFormForOpen();
             }
         }
@@ -96,6 +92,13 @@ namespace PasswordHolder
         {
             if (_isNew)
             {
+                if (!string.IsNullOrWhiteSpace(_fileName) && !string.IsNullOrWhiteSpace(_password))
+                {
+                    SaveAccountCollection();
+                    _isDirty = false;
+                    return;
+                }
+
                 _fileName = null;
                 _password = null;
                 FileDialogResult<string> fileResult = DialogUtility.ShowSaveFileDialog(this, FILE_FILTER, _initialFileDialogDirectory);
@@ -105,9 +108,9 @@ namespace PasswordHolder
                     FormDialogResult<string> passwordResult = DialogUtility.ShowPasswordDialog(this);
                     if (passwordResult.Result == DialogResult.OK && passwordResult.ResultObject != null)
                     {
-                        _isDirty = false;
                         _password = passwordResult.ResultObject;
                         SaveAccountCollection();
+                        _isDirty = false;
                     }
                 }
             }
@@ -171,7 +174,7 @@ namespace PasswordHolder
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_overrideFormClosing)
+            if (!_overrideFormClosing && e.CloseReason != CloseReason.ApplicationExitCall)
             {
                 bool result = CanExit();
                 e.Cancel = !result;

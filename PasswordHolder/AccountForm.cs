@@ -85,7 +85,7 @@ namespace PasswordHolder
 
         private void AccountForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_okButtonClicked)
+            if (!_okButtonClicked && e.CloseReason != CloseReason.ApplicationExitCall)
             {
                 this.AccountObject = null;
                 this.DialogResult = DialogResult.Cancel;
