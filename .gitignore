@@ -109,3 +109,14 @@ Arowana.Test/obj/Release/Arowana.Test.csproj.FileListAbsolute.txt
 Arowana.Test/obj/Debug/Arowana.Test.csproj.FileListAbsolute.txt
 Arowana.Test/bin/Release/Newtonsoft.Json.xml
 Arowana.Test/bin/Debug/Newtonsoft.Json.xml
+.vs/Arowana/v16/.suo
+.vs/Arowana/v16/Server/sqlite3/db.lock
+.vs/Arowana/v16/Server/sqlite3/storage.ide
+.vs/Arowana/v16/Server/sqlite3/storage.ide-shm
+.vs/Arowana/v16/Server/sqlite3/storage.ide-wal
+Arowana.Test/bin/Debug/Arowana.dll.config
+Arowana.Test/obj/Debug/Arowana.Test.csproj.CopyComplete
+Arowana/
+packages/Newtonsoft.Json.9.0.1/.signature.p7s
+TestConsole/bin/Debug/Arowana.dll.config
+TestConsole/obj/Debug/TestConsole.csproj.CopyComplete
