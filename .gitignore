@@ -120,3 +120,11 @@ Arowana/
 packages/Newtonsoft.Json.9.0.1/.signature.p7s
 TestConsole/bin/Debug/Arowana.dll.config
 TestConsole/obj/Debug/TestConsole.csproj.CopyComplete
+PasswordHolder/bin/Debug/Arowana.dll.config
+PasswordHolder/bin/Debug/PasswordHolder.application
+PasswordHolder/bin/Debug/PasswordHolder.exe.manifest
+PasswordHolder/obj/Debug/.NETFramework,Version=v4.5.2.AssemblyAttributes.cs
+PasswordHolder/obj/Debug/PasswordHolder.application
+PasswordHolder/obj/Debug/PasswordHolder.csproj.CopyComplete
+PasswordHolder/obj/Debug/PasswordHolder.exe.manifest
+PasswordHolder/obj/Debug/PasswordHolder.TrustInfo.xml
