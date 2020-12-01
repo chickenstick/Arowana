@@ -15,10 +15,19 @@ namespace Arowana.Test
     [TestFixture]
     public class ActionListTests
     {
+
+        #region - Constants -
+
+        private const string PASSWORD = "realpassword";
+        private const string IV = "FartedInPublic69";
+        private const string SALT = "jfdg8jlFJH89lkJsdf9jm8n*y6(*^jlkfdj";
+
+        #endregion
+
         [Test]
         public void TestSerializeAndDeserialize()
         {
-            IFactory factory = new TestingFactory("realpassword");
+            IFactory factory = new TestingFactory(PASSWORD, IV, SALT);
             ActionList actionList = factory.GetActionList();
             IStorage storage = factory.GetStorage();
 
@@ -34,7 +43,7 @@ namespace Arowana.Test
         [Test]
         public void TestUnsuccessfulLoadFile()
         {
-            IFactory factory = new TestingFactory("realpassword");
+            IFactory factory = new TestingFactory(PASSWORD, IV, SALT);
             ActionList actionList = factory.GetActionList();
             IStorage storage = factory.GetStorage();
 
@@ -44,7 +53,7 @@ namespace Arowana.Test
 
             string fromStorage = storage.RetrieveData("test");
 
-            IFactory factory2 = new TestingFactory("wrong");
+            IFactory factory2 = new TestingFactory("wrong", IV, SALT);
             ActionList actionList2 = factory2.GetActionList();
 
             try

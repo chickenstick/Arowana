@@ -18,7 +18,6 @@ namespace Arowana.Storage
 
         public FileStorage()
         {
-
         }
 
         #endregion

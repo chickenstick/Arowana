@@ -48,14 +48,10 @@ namespace Arowana.Factories
             EncryptionAction encryptionAction = new EncryptionAction(crypto);
             CompressorBase compressor = this.GetCompressor();
             CompressionAction compressionAction = new CompressionAction(compressor);
-            ActionList actionList = new ActionList(serializer, encryptionAction, compressionAction);
-            return actionList;
+            return new ActionList(serializer, encryptionAction, compressionAction);
         }
 
-        public CompressorBase GetCompressor()
-        {
-            return new GZipCompressor();
-        }
+        public CompressorBase GetCompressor() => new GZipCompressor();
 
         public DataCryptoBase GetEncryptor()
         {
@@ -63,21 +59,11 @@ namespace Arowana.Factories
             return new RijndaelDataCrypto(settings.Password, settings.Salt, settings.IV);
         }
 
-        public ISerializer GetSerializer()
-        {
-            return new JsonSerializer();
-        }
+        public ISerializer GetSerializer() => new JsonSerializer();
 
-        public ISettings GetSettings()
-        {
-            SettingsToken settings = new SettingsToken(_password, _iv, _salt);
-            return settings;
-        }
+        public ISettings GetSettings() => new SettingsToken(_password, _iv, _salt);
 
-        public IStorage GetStorage()
-        {
-            return new FileStorage();
-        }
+        public virtual IStorage GetStorage() => new FileStorage();
 
         #endregion
 
