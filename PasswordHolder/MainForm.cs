@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Microsoft.Extensions.Configuration;
+
 using Arowana;
 using Arowana.Actions;
 using Arowana.Exceptions;
@@ -38,6 +40,7 @@ namespace PasswordHolder
         private bool _isDirty;
         private string _fileName;
         private string _initialFileDialogDirectory;
+        private Lazy<AppSettings> _appSettings;
 
         #endregion
 
@@ -47,6 +50,8 @@ namespace PasswordHolder
         {
             InitializeComponent();
             _overrideFormClosing = false;
+
+            _appSettings = new Lazy<AppSettings>(GetAppSettings);
         }
 
         #endregion
@@ -213,7 +218,7 @@ namespace PasswordHolder
             }
             _password = passwordResult.ResultObject;
 
-            IFactory factory = FormFactory.GetFactory(_password);
+            IFactory factory = FormFactory.GetFactory(_password, _appSettings.Value.IV, _appSettings.Value.Salt);
             IStorage storage = FormFactory.GetStorage();
 
             string serialized = storage.RetrieveData(_fileName);
@@ -314,7 +319,7 @@ namespace PasswordHolder
 
         private void SaveAccountCollection()
         {
-            IFactory factory = FormFactory.GetFactory(_password);
+            IFactory factory = FormFactory.GetFactory(_password, _appSettings.Value.IV, _appSettings.Value.Salt);
             IStorage storage = FormFactory.GetStorage();
 
             ActionList actionList = factory.GetActionList();
@@ -358,6 +363,17 @@ namespace PasswordHolder
             _accountCollection.Remove(selectedAccount.Name);
             SetListDataSource();
             UpdateFileChangedStatus(true);
+        }
+
+        private AppSettings GetAppSettings()
+        {
+            IConfiguration configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", false, true)
+                .Build();
+
+            AppSettings appSettings = new AppSettings();
+            configuration.GetSection("appSettings").Bind(appSettings);
+            return appSettings;
         }
 
         #endregion

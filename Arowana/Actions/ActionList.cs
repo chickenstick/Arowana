@@ -96,8 +96,7 @@ namespace Arowana.Actions
             }
             catch (Newtonsoft.Json.JsonReaderException ex)
             {
-                DeserializationException dex = new DeserializationException("Unable to deserialize string.", ex);
-                throw dex;
+                throw new DeserializationException("Unable to deserialize string.", ex);
             }
         }
 

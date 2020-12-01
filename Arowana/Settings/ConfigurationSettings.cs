@@ -14,13 +14,13 @@ namespace Arowana.Settings
     public class ConfigurationSettings : ISettings
     {
 
-        #region - Constructor -
+        #region - Constructors -
 
-        public ConfigurationSettings()
+        public ConfigurationSettings(string password, string iv, string salt)
         {
-            Password = ConfigurationManager.AppSettings["Password"];
-            IV = ConfigurationManager.AppSettings["IV"];
-            Salt = ConfigurationManager.AppSettings["Salt"];
+            this.Password = password;
+            this.IV = iv;
+            this.Salt = salt;
         }
 
         #endregion

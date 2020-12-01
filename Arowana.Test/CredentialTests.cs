@@ -1,16 +1,16 @@
 ﻿#region - Using Statements -
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 #endregion
 
 namespace Arowana.Test
 {
-    [TestClass]
+    [TestFixture]
     public class CredentialTests
     {
-        [TestMethod]
+        [Test]
         public void TestEquality()
         {
             Credential cred1 = TestObjectBuilder.GetCredential1();
@@ -18,7 +18,7 @@ namespace Arowana.Test
             Assert.AreEqual(cred1, cred2);
         }
 
-        [TestMethod]
+        [Test]
         public void TestInequality()
         {
             Credential cred1 = TestObjectBuilder.GetCredential1();
@@ -26,7 +26,7 @@ namespace Arowana.Test
             Assert.AreNotEqual(cred1, cred2);
         }
 
-        [TestMethod]
+        [Test]
         public void TestHashCodeEquality()
         {
             Credential cred1 = TestObjectBuilder.GetCredential1();
@@ -34,7 +34,7 @@ namespace Arowana.Test
             Assert.AreEqual(cred1.GetHashCode(), cred2.GetHashCode());
         }
 
-        [TestMethod]
+        [Test]
         public void TestHashCodeInequality()
         {
             Credential cred1 = TestObjectBuilder.GetCredential1();
@@ -42,7 +42,7 @@ namespace Arowana.Test
             Assert.AreNotEqual(cred1.GetHashCode(), cred2.GetHashCode());
         }
 
-        [TestMethod]
+        [Test]
         public void TestGetHashCodeWithNullProperties()
         {
             try
@@ -56,7 +56,7 @@ namespace Arowana.Test
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestEqualityCheckWithNullProperties()
         {
             Credential cred1 = TestObjectBuilder.GetCredentialWithNullProperties();

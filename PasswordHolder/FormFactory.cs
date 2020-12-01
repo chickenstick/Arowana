@@ -18,9 +18,9 @@ namespace PasswordHolder
 
         #region - Public Methods -
 
-        public static IFactory GetFactory(string password)
+        public static IFactory GetFactory(string password, string iv, string salt)
         {
-            return new DefaultFactory(password);
+            return new DefaultFactory(password, iv, salt);
         }
 
         public static IStorage GetStorage()

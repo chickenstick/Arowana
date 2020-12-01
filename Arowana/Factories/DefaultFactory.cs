@@ -23,14 +23,18 @@ namespace Arowana.Factories
         #region - Fields -
 
         private string _password;
+        private string _iv;
+        private string _salt;
 
         #endregion
 
         #region - Constructor -
 
-        public DefaultFactory(string password)
+        public DefaultFactory(string password, string iv, string salt)
         {
             _password = password;
+            _iv = iv;
+            _salt = salt;
         }
 
         #endregion
@@ -66,7 +70,7 @@ namespace Arowana.Factories
 
         public ISettings GetSettings()
         {
-            SettingsToken settings = new SettingsToken(_password);
+            SettingsToken settings = new SettingsToken(_password, _iv, _salt);
             return settings;
         }
 

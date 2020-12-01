@@ -1,16 +1,16 @@
 ﻿#region - Using Statements -
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 #endregion
 
 namespace Arowana.Test
 {
-    [TestClass]
+    [TestFixture]
     public class AccountCollectionTests
     {
-        [TestMethod]
+        [Test]
         public void TestEquality()
         {
             AccountCollection accountCol1 = TestObjectBuilder.GetAccountCollection();
@@ -18,7 +18,7 @@ namespace Arowana.Test
             Assert.AreEqual(accountCol1, accountCol2);
         }
 
-        [TestMethod]
+        [Test]
         public void TestInequality()
         {
             AccountCollection accountCol1 = TestObjectBuilder.GetAccountCollection();
@@ -26,7 +26,7 @@ namespace Arowana.Test
             Assert.AreNotEqual(accountCol1, accountCol2);
         }
 
-        [TestMethod]
+        [Test]
         public void TestHashCodeEquality()
         {
             AccountCollection accountCol1 = TestObjectBuilder.GetAccountCollection();
@@ -34,7 +34,7 @@ namespace Arowana.Test
             Assert.AreEqual(accountCol1.GetHashCode(), accountCol2.GetHashCode());
         }
 
-        [TestMethod]
+        [Test]
         public void TestHashCodeInequality()
         {
             AccountCollection accountCol1 = TestObjectBuilder.GetAccountCollection();
@@ -42,7 +42,7 @@ namespace Arowana.Test
             Assert.AreNotEqual(accountCol1.GetHashCode(), accountCol2.GetHashCode());
         }
 
-        [TestMethod]
+        [Test]
         public void TestGetHashCodeWithNoAccounts()
         {
             AccountCollection collection = TestObjectBuilder.GetAccountCollectionWithNoAccounts();
@@ -56,7 +56,7 @@ namespace Arowana.Test
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestEqualityWithNoAccounts()
         {
             AccountCollection coll1 = TestObjectBuilder.GetAccountCollectionWithNoAccounts();

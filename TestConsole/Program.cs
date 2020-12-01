@@ -112,7 +112,7 @@ namespace TestConsole
             AccountCollection collection = GetTestCollection();
             Console.WriteLine(collection);
             
-            IFactory factory = new DefaultFactory("smellyourbeans");
+            IFactory factory = new DefaultFactory("smellyourbeans", "FartedInPublic69", "jfdg8jlFJH89lkJsdf9jm8n*y6(*^jlkfdj");
             ActionList actionList = factory.GetActionList();
             IStorage storage = factory.GetStorage();
 

@@ -1,7 +1,7 @@
 ﻿#region - Using Statements -
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 using Arowana.Actions;
 using Arowana.Exceptions;
@@ -12,10 +12,10 @@ using Arowana.Storage;
 
 namespace Arowana.Test
 {
-    [TestClass]
+    [TestFixture]
     public class ActionListTests
     {
-        [TestMethod]
+        [Test]
         public void TestSerializeAndDeserialize()
         {
             IFactory factory = new TestingFactory("realpassword");
@@ -31,7 +31,7 @@ namespace Arowana.Test
             Assert.AreEqual(collection, deserialized);
         }
 
-        [TestMethod]
+        [Test]
         public void TestUnsuccessfulLoadFile()
         {
             IFactory factory = new TestingFactory("realpassword");

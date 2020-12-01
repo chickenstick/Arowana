@@ -6,10 +6,18 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Microsoft.Extensions.Configuration;
+
 namespace PasswordHolder
 {
     static class Program
     {
+
+        #region - Fields -
+
+        private static IConfiguration _configuration;
+
+        #endregion
 
         #region - Static Methods -
 
@@ -23,6 +31,10 @@ namespace PasswordHolder
             Application.SetCompatibleTextRenderingDefault(false);
 
             SetupUnhandledExceptionCapture();
+
+            _configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", true, true)
+                .Build();
 
             MainForm mainForm = new MainForm();
             Application.Run(mainForm);

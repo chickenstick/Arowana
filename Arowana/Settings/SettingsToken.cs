@@ -16,11 +16,11 @@ namespace Arowana.Settings
 
         #region - Constructor -
 
-        public SettingsToken(string password)
+        public SettingsToken(string password, string iv, string salt)
         {
             this.Password = password;
-            this.IV = ConfigurationManager.AppSettings["IV"];
-            this.Salt = ConfigurationManager.AppSettings["Salt"];
+            this.IV = iv;
+            this.Salt = salt;
         }
 
         #endregion

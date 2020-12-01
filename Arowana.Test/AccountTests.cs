@@ -1,16 +1,16 @@
 ﻿#region - Using Statements -
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 #endregion
 
 namespace Arowana.Test
 {
-    [TestClass]
+    [TestFixture]
     public class AccountTests
     {
-        [TestMethod]
+        [Test]
         public void TestEquality()
         {
             Account account1 = TestObjectBuilder.GetAccount1();
@@ -18,7 +18,7 @@ namespace Arowana.Test
             Assert.AreEqual(account1, account2);
         }
 
-        [TestMethod]
+        [Test]
         public void TestInequality()
         {
             Account account1 = TestObjectBuilder.GetAccount1();
@@ -26,7 +26,7 @@ namespace Arowana.Test
             Assert.AreNotEqual(account1, account2);
         }
 
-        [TestMethod]
+        [Test]
         public void TestHashCodeEquality()
         {
             Account account1 = TestObjectBuilder.GetAccount1();
@@ -34,7 +34,7 @@ namespace Arowana.Test
             Assert.AreEqual(account1.GetHashCode(), account2.GetHashCode());
         }
 
-        [TestMethod]
+        [Test]
         public void TestHashCodeInequality()
         {
             Account account1 = TestObjectBuilder.GetAccount1();
@@ -42,7 +42,7 @@ namespace Arowana.Test
             Assert.AreNotEqual(account1.GetHashCode(), account2.GetHashCode());
         }
 
-        [TestMethod]
+        [Test]
         public void TestGetHashCodeWithNullProperties()
         {
             Account account = TestObjectBuilder.GetAccountWithNullProperties();
@@ -56,7 +56,7 @@ namespace Arowana.Test
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestEqualityWithNullProperties()
         {
             Account account1 = TestObjectBuilder.GetAccountWithNullProperties();
