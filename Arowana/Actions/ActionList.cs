@@ -40,24 +40,35 @@ namespace Arowana.Actions
 
         public string DoActions<T>(T input)
         {
-            using (MemoryStream inputStream = new MemoryStream())
+            //byte[] bytes = ToByteArray(input);
+            //if (_actionList.Length > 0)
+            //{
+            //    bytes = _actionList[0].DoAction(bytes);
+            //}
+            //return Convert.ToBase64String(bytes);
+
+            byte[] bytes = ToByteArray(input);
+            foreach (ActionBase action in _actionList)
             {
-                byte[] bytes = ToByteArray(input);
-                if(_actionList.Length > 0)
-                {
-                    bytes = _actionList[0].DoAction(bytes);
-                }
-                return Convert.ToBase64String(bytes);
+                bytes = action.DoAction(bytes);
             }
+            return Convert.ToBase64String(bytes);
         }
 
         public T ReverseActions<T>(string serialized)
         {
+            //byte[] bytes = Convert.FromBase64String(serialized);
+            //if (_actionList.Length > 0)
+            //{
+            //    int startIndex = _actionList.Length - 1;
+            //    bytes = _actionList[startIndex].ReverseAction(bytes);
+            //}
+            //return FromByteArray<T>(bytes);
+
             byte[] bytes = Convert.FromBase64String(serialized);
-            if (_actionList.Length > 0)
+            for (int i = _actionList.Length - 1; i >= 0; i--)
             {
-                int startIndex = _actionList.Length - 1;
-                bytes = _actionList[startIndex].ReverseAction(bytes);
+                bytes = _actionList[i].ReverseAction(bytes);
             }
             return FromByteArray<T>(bytes);
         }

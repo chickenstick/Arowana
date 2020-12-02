@@ -33,27 +33,9 @@ namespace Arowana.Actions
 
         #region - Public Methods -
 
-        public override byte[] DoAction(byte[] inputBytes)
-        {
-            byte[] outputBytes = _compressor.Compress(inputBytes);
+        public override byte[] DoAction(byte[] inputBytes) => _compressor.Compress(inputBytes);
 
-            if (NextAction != null)
-            {
-                return NextAction.DoAction(outputBytes);
-            }
-            return outputBytes;
-        }
-
-        public override byte[] ReverseAction(byte[] inputBytes)
-        {
-            byte[] outputBytes = _compressor.Decompress(inputBytes);
-
-            if (PreviousAction != null)
-            {
-                return PreviousAction.ReverseAction(outputBytes);
-            }
-            return outputBytes;
-        }
+        public override byte[] ReverseAction(byte[] inputBytes) => _compressor.Decompress(inputBytes);
 
         #endregion
 
