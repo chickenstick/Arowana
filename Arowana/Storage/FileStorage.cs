@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Arowana.Serialization;
+
 #endregion
 
 namespace Arowana.Storage
@@ -14,10 +16,17 @@ namespace Arowana.Storage
     public class FileStorage : IStorage
     {
 
+        #region - Fields -
+
+        private IStringSerializer _stringSerializer;
+
+        #endregion
+
         #region - Constructor -
 
-        public FileStorage()
+        public FileStorage(IStringSerializer stringSerializer)
         {
+            _stringSerializer = stringSerializer;
         }
 
         #endregion
@@ -27,12 +36,12 @@ namespace Arowana.Storage
         public string RetrieveData(string path)
         {
             byte[] bytes = File.ReadAllBytes(path);
-            return Convert.ToBase64String(bytes);
+            return _stringSerializer.Stringify(bytes);
         }
 
         public void StoreData(string path, string data)
         {
-            byte[] inputBytes = Convert.FromBase64String(data);
+            byte[] inputBytes = _stringSerializer.Destringify(data);
             using (FileStream fStream = new FileStream(path, FileMode.Create))
             {
                 fStream.Write(inputBytes, 0, inputBytes.Length);

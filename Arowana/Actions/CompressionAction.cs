@@ -12,7 +12,7 @@ using Arowana.Compression;
 
 namespace Arowana.Actions
 {
-    public sealed class CompressionAction : ActionBase
+    public sealed class CompressionAction : IAction
     {
 
         #region - Fields -
@@ -33,9 +33,9 @@ namespace Arowana.Actions
 
         #region - Public Methods -
 
-        public override byte[] DoAction(byte[] inputBytes) => _compressor.Compress(inputBytes);
+        public byte[] DoAction(byte[] inputBytes) => _compressor.Compress(inputBytes);
 
-        public override byte[] ReverseAction(byte[] inputBytes) => _compressor.Decompress(inputBytes);
+        public byte[] ReverseAction(byte[] inputBytes) => _compressor.Decompress(inputBytes);
 
         #endregion
 

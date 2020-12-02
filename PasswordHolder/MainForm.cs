@@ -219,13 +219,13 @@ namespace PasswordHolder
             _password = passwordResult.ResultObject;
 
             IFactory factory = FormFactory.GetFactory(_password, _appSettings.Value.IV, _appSettings.Value.Salt);
-            IStorage storage = FormFactory.GetStorage();
+            IStorage storage = factory.GetStorage();
 
-            string serialized = storage.RetrieveData(_fileName);
             ActionList actionList = factory.GetActionList();
 
             try
             {
+                string serialized = storage.RetrieveData(_fileName);
                 collection = actionList.ReverseActions<AccountCollection>(serialized);
             }
             catch (DeserializationException)
@@ -320,7 +320,7 @@ namespace PasswordHolder
         private void SaveAccountCollection()
         {
             IFactory factory = FormFactory.GetFactory(_password, _appSettings.Value.IV, _appSettings.Value.Salt);
-            IStorage storage = FormFactory.GetStorage();
+            IStorage storage = factory.GetStorage();
 
             ActionList actionList = factory.GetActionList();
             string serialized = actionList.DoActions(_accountCollection);

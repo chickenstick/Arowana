@@ -14,7 +14,7 @@ using Arowana.Encryption;
 
 namespace Arowana.Actions
 {
-    public sealed class EncryptionAction : ActionBase
+    public sealed class EncryptionAction : IAction
     {
 
         #region - Fields -
@@ -35,9 +35,9 @@ namespace Arowana.Actions
 
         #region - Public Methods -
 
-        public override byte[] DoAction(byte[] inputBytes) => _encryptor.Encrypt(inputBytes);
+        public byte[] DoAction(byte[] inputBytes) => _encryptor.Encrypt(inputBytes);
 
-        public override byte[] ReverseAction(byte[] inputBytes) => _encryptor.Decrypt(inputBytes);
+        public byte[] ReverseAction(byte[] inputBytes) => _encryptor.Decrypt(inputBytes);
 
         #endregion
 

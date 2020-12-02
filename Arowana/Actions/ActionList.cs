@@ -21,17 +21,18 @@ namespace Arowana.Actions
         #region - Fields -
 
         private ISerializer _serializer;
-        private ActionBase[] _actionList;
+        private IStringSerializer _stringSerializer;
+        private IAction[] _actionList;
 
         #endregion
 
         #region - Constructor -
 
-        public ActionList(ISerializer serializer, params ActionBase[] actions)
+        public ActionList(ISerializer serializer, IStringSerializer stringSerializer, params IAction[] actions)
         {
             _serializer = serializer;
-            _actionList = actions ?? new ActionBase[0];
-            SetActions();
+            _stringSerializer = stringSerializer;
+            _actionList = actions ?? new IAction[0];
         }
 
         #endregion
@@ -40,32 +41,17 @@ namespace Arowana.Actions
 
         public string DoActions<T>(T input)
         {
-            //byte[] bytes = ToByteArray(input);
-            //if (_actionList.Length > 0)
-            //{
-            //    bytes = _actionList[0].DoAction(bytes);
-            //}
-            //return Convert.ToBase64String(bytes);
-
             byte[] bytes = ToByteArray(input);
-            foreach (ActionBase action in _actionList)
+            foreach (IAction action in _actionList)
             {
                 bytes = action.DoAction(bytes);
             }
-            return Convert.ToBase64String(bytes);
+            return _stringSerializer.Stringify(bytes);
         }
 
         public T ReverseActions<T>(string serialized)
         {
-            //byte[] bytes = Convert.FromBase64String(serialized);
-            //if (_actionList.Length > 0)
-            //{
-            //    int startIndex = _actionList.Length - 1;
-            //    bytes = _actionList[startIndex].ReverseAction(bytes);
-            //}
-            //return FromByteArray<T>(bytes);
-
-            byte[] bytes = Convert.FromBase64String(serialized);
+            byte[] bytes = _stringSerializer.Destringify(serialized);
             for (int i = _actionList.Length - 1; i >= 0; i--)
             {
                 bytes = _actionList[i].ReverseAction(bytes);
@@ -76,23 +62,6 @@ namespace Arowana.Actions
         #endregion
 
         #region - Private Methods -
-
-        private void SetActions()
-        {
-            for (int i = 0; i < _actionList.Length; i++)
-            {
-                ActionBase current = _actionList[i];
-
-                if (i > 0)
-                {
-                    current.PreviousAction = _actionList[i - 1];
-                }
-                if (i < _actionList.Length - 1)
-                {
-                    current.NextAction = _actionList[i + 1];
-                }
-            }
-        }
 
         private byte[] ToByteArray<T>(T obj)
         {

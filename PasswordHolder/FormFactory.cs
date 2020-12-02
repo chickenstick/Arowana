@@ -18,25 +18,9 @@ namespace PasswordHolder
 
         #region - Public Methods -
 
-        public static IFactory GetFactory(string password, string iv, string salt)
-        {
-            return new DefaultFactory(password, iv, salt);
-        }
-
-        public static IStorage GetStorage()
-        {
-            return new FileStorage();
-        }
-
-        public static PasswordForm GetPasswordForm()
-        {
-            return new PasswordForm();
-        }
-
-        public static AccountForm GetAccountForm()
-        {
-            return new AccountForm();
-        }
+        public static IFactory GetFactory(string password, string iv, string salt) => new DefaultFactory(password, iv, salt);
+        public static PasswordForm GetPasswordForm() => new PasswordForm();
+        public static AccountForm GetAccountForm() => new AccountForm();
 
         #endregion
 

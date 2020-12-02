@@ -19,7 +19,6 @@ namespace Arowana.Serialization
 
         public JsonSerializer()
         {
-
         }
 
         #endregion
