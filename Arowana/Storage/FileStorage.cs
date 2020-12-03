@@ -42,10 +42,7 @@ namespace Arowana.Storage
         public void StoreData(string path, string data)
         {
             byte[] inputBytes = _stringSerializer.Destringify(data);
-            using (FileStream fStream = new FileStream(path, FileMode.Create))
-            {
-                fStream.Write(inputBytes, 0, inputBytes.Length);
-            }
+            File.WriteAllBytes(path, inputBytes);
         }
 
         #endregion
